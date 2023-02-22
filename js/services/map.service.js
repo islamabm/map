@@ -4,7 +4,6 @@ export const mapService = {
   initMap,
   addMarker,
   panTo,
-  //   findAdress,
 }
 
 // Var that is used throughout this Module (not global)
@@ -60,7 +59,7 @@ function panTo(lat, lng) {
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve()
 
-  const API_KEY = '  AIzaSyC0oEwQyLbXgSFi586DEiU-02gF4xshG9k' //TODO: Enter your API Key
+  const API_KEY = 'AIzaSyC0oEwQyLbXgSFi586DEiU-02gF4xshG9k' //TODO: Enter your API Key
   var elGoogleApi = document.createElement('script')
   let adress = document.querySelector('input[name="place-name"]')
   elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&q=${adress.value}`
@@ -82,11 +81,3 @@ function makeId(length = 6) {
   }
   return txt
 }
-
-// function findAdress() {
-//   let adress = document.querySelector('input[name="place-name"]')
-//   console.log(adress.value)
-//   const url = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD4d1aPv7gbAj7lc6m1wFwMnmMuBGApoLI&q=${adress.value}`
-
-//   fetch(url).then((res) => console.log(res))
-// }
