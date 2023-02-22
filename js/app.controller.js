@@ -40,7 +40,7 @@ function onDeleteLoc(locId) {
 }
 
 function onGoLoc(locLat, locLng) {
-  mapService.initMap(locLat, locLng)
+  mapService.initMap(locLng,locLat)
 }
 
 // add location to the list locs
