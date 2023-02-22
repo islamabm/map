@@ -3,14 +3,16 @@ export const locService = {
   addLoc,
 }
 
-const locs = [
-  { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
-  { name: 'Neveragain', lat: 32.047201, lng: 34.832581 },
-]
+// const locs = [
+//   { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
+//   { name: 'Neveragain', lat: 32.047201, lng: 34.832581 },
+// ]
+
+const locs = loadFromStorage('locDB') || []
 
 function addLoc(loc) {
   locs.push(loc)
-  console.log('hi')
+  saveToStorage('locDB', locs)
 }
 
 function getLocs() {
@@ -19,4 +21,13 @@ function getLocs() {
       resolve(locs)
     }, 2000)
   })
+}
+
+function loadFromStorage(key) {
+  var val = localStorage.getItem(key)
+  return JSON.parse(val)
+}
+
+function saveToStorage(key, val) {
+  localStorage.setItem(key, JSON.stringify(val))
 }
