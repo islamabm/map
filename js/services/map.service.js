@@ -62,7 +62,8 @@ function _connectGoogleApi() {
 
   const API_KEY = '  AIzaSyC0oEwQyLbXgSFi586DEiU-02gF4xshG9k' //TODO: Enter your API Key
   var elGoogleApi = document.createElement('script')
-  elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
+  let adress = document.querySelector('input[name="place-name"]')
+  elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&q=${adress.value}`
   elGoogleApi.async = true
   document.body.append(elGoogleApi)
 
@@ -85,7 +86,7 @@ function makeId(length = 6) {
 // function findAdress() {
 //   let adress = document.querySelector('input[name="place-name"]')
 //   console.log(adress.value)
-//   //   const url = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD4d1aPv7gbAj7lc6m1wFwMnmMuBGApoLI&q=${adress.value}`
+//   const url = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD4d1aPv7gbAj7lc6m1wFwMnmMuBGApoLI&q=${adress.value}`
 
-//   //   fetch(url).then((res) => console.log(res))
+//   fetch(url).then((res) => console.log(res))
 // }
