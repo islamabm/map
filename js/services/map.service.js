@@ -4,6 +4,8 @@ export const mapService = {
   initMap,
   addMarker,
   panTo,
+  getIcon,
+  // codeAddress,
 }
 
 // Var that is used throughout this Module (not global)
@@ -20,9 +22,27 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     })
   })
 }
+// function codeAddress(address) {
+//   let address = 'israel'
+//   return new Promise((resolve, reject) => {
+//     const geocoder = new google.maps.Geocoder()
+//     geocoder.geocode({ address: address }, function (results, status) {
+//       if (status == 'OK') {
+//         const loc = JSON.parse(JSON.stringify(results[0].geometry.location))
+//         console.log(loc)
+//         panTo(loc.lat, loc.lng)
+//         resolve({ latLng: loc, name: address })
+//       } else {
+//         alert('Geocode was not successful for the following reason: ' + status)
+//       }
+//     })
+//   })
+// }
 function handleMapClick(ev) {
   const latitude = ev.lat
   const langitude = ev.lng
+  let loc = { lat: latitude, lng: langitude }
+  addMarker(loc)
   const locationName = prompt('What is the name of the location?')
   const id = makeId()
   const createdAt = new Date()
@@ -35,7 +55,6 @@ function handleMapClick(ev) {
     latitude,
     langitude,
     updatedAt,
-    // weather,
   }
 
   locService.addLoc(location)
@@ -46,7 +65,8 @@ function addMarker(loc) {
     position: loc,
     map: gMap,
     title: 'Hello World!',
-    animation: google.maps.Animation.DROP,
+    icon: getIcon(),
+    animation: google.maps.Animation.BOUNCE,
   })
   return marker
 }
@@ -80,4 +100,17 @@ function makeId(length = 6) {
     txt += possible.charAt(Math.floor(Math.random() * possible.length))
   }
   return txt
+}
+
+function getIcon() {
+  return {
+    url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+
+    // This marker is 20 pixels wide by 32 pixels high.
+    size: new google.maps.Size(100, 100),
+    // The origin for this image is (0, 0).
+    origin: new google.maps.Point(0, 0),
+    // The anchor for this image is the base of the flagpole at (0, 32).
+    anchor: new google.maps.Point(0, 32),
+  }
 }
