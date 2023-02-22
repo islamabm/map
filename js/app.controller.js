@@ -14,7 +14,9 @@ function onInit() {
   renderPlaces()
   mapService
     .initMap()
-    .then(() => {console.log('hi');})
+    .then(() => {
+      console.log('hi')
+    })
     .catch(() => console.log('Error: cannot init map'))
 }
 
