@@ -8,6 +8,7 @@ export const mapService = {
 
 // Var that is used throughout this Module (not global)
 var gMap
+const STORAGE_KEY = 'locDB'
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
   console.log('InitMap')
@@ -32,13 +33,15 @@ function handleMapClick(ev) {
   const updatedAt = createdAt
 
   const location = {
+    locationName,
     createdAt,
     id,
-    locationName,
     latitude,
     langitude,
     updatedAt,
+    // weather,
   }
+
   locService.addLoc(location)
 }
 
@@ -58,7 +61,7 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve()
-  const API_KEY = '' //TODO: Enter your API Key
+  const API_KEY = 'AIzaSyD4d1aPv7gbAj7lc6m1wFwMnmMuBGApoLI' //TODO: Enter your API Key
   var elGoogleApi = document.createElement('script')
   elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
   elGoogleApi.async = true
