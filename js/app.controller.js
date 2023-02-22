@@ -8,13 +8,13 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onDeleteLoc = onDeleteLoc
 window.onGoLoc = onGoLoc
-// window.onSearchLoc = onSearchLoc
+window.onSearchLoc = onSearchLoc
 
 function onInit() {
   renderPlaces()
   mapService
     .initMap()
-    .then(() => {})
+    .then(() => {console.log('hi');})
     .catch(() => console.log('Error: cannot init map'))
 }
 
@@ -23,7 +23,6 @@ function getPosition() {
   console.log('Getting Pos')
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject)
-    console.log(navigator)
   })
 }
 
@@ -50,11 +49,11 @@ function onGetLocs() {
   })
 }
 
-// function onSearchLoc(ev) {
-//   console.log('itay')
-//   ev.preventDefault()
-//   mapService.findAdress()
-// }
+function onSearchLoc(ev) {
+  console.log('itay')
+  ev.preventDefault()
+  mapService.findAdress()
+}
 
 // on click this btn changed the element html
 
@@ -80,7 +79,7 @@ function onPanTo() {
 
 function renderPlaces() {
   const locations = loadFromStorage('locDB')
-  console.log(locations)
+
   if (!locations) return
 
   let strHTMLs = locations
