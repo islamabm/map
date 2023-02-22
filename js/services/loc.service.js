@@ -1,6 +1,7 @@
 export const locService = {
   getLocs,
   addLoc,
+  deleteLoc,
 }
 
 // const locs = [
@@ -13,6 +14,7 @@ const locs = loadFromStorage('locDB') || []
 function addLoc(loc) {
   locs.push(loc)
   saveToStorage('locDB', locs)
+  return locs
 }
 
 function getLocs() {
@@ -21,6 +23,12 @@ function getLocs() {
       resolve(locs)
     }, 2000)
   })
+}
+
+function deleteLoc(locId) {
+  const locIdx = locs.findIndex((loc) => loc.id === locId)
+  locs.splice(locIdx, 1)
+  saveToStorage('locDB', locs)
 }
 
 function loadFromStorage(key) {

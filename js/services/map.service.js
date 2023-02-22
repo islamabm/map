@@ -4,16 +4,14 @@ export const mapService = {
   initMap,
   addMarker,
   panTo,
+  //   findAdress,
 }
 
 // Var that is used throughout this Module (not global)
 var gMap
-const STORAGE_KEY = 'locDB'
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-  console.log('InitMap')
   return _connectGoogleApi().then(() => {
-    console.log('google available')
     gMap = new google.maps.Map(document.querySelector('#map'), {
       center: { lat, lng },
       zoom: 15,
@@ -21,7 +19,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     gMap.addListener('click', (mapsMouseEvent) => {
       handleMapClick(mapsMouseEvent.latLng.toJSON())
     })
-    console.log('Map!', gMap)
   })
 }
 function handleMapClick(ev) {
@@ -50,6 +47,7 @@ function addMarker(loc) {
     position: loc,
     map: gMap,
     title: 'Hello World!',
+    animation: google.maps.Animation.DROP,
   })
   return marker
 }
@@ -61,7 +59,8 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve()
-  const API_KEY = 'AIzaSyD4d1aPv7gbAj7lc6m1wFwMnmMuBGApoLI' //TODO: Enter your API Key
+
+  const API_KEY = '  AIzaSyC0oEwQyLbXgSFi586DEiU-02gF4xshG9k' //TODO: Enter your API Key
   var elGoogleApi = document.createElement('script')
   elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
   elGoogleApi.async = true
@@ -82,3 +81,11 @@ function makeId(length = 6) {
   }
   return txt
 }
+
+// function findAdress() {
+//   let adress = document.querySelector('input[name="place-name"]')
+//   console.log(adress.value)
+//   //   const url = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD4d1aPv7gbAj7lc6m1wFwMnmMuBGApoLI&q=${adress.value}`
+
+//   //   fetch(url).then((res) => console.log(res))
+// }

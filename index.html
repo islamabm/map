@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TravelTip</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="main-layout">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="main-layout">
     <section class="user-data">
-    <h1>TravelTip</h1>
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: 
-        <pre class="locs"></pre>
-    </p>
-</section>
+      <h1>TravelTip</h1>
+      <p>You are at: <span class="user-pos"></span></p>
+
+      <section class="locs-container">
+        <h2>Locations:</h2>
+        <section class="locs"></section>
+      </section>
+    </section>
     <main class="main-content">
-    
-    <section class="btns-container">
+      <section class="btns-container">
         <form onsubmit="onSearchLoc(event)">
-            <input class="input-search"
-             type="search"
-             placeholder="Enter Location ">
-            
-             <button type="button">GO</button>
+          <input
+            class="input-search"
+            type="search"
+            name="place-name"
+            placeholder="Enter Location "
+          />
+
+          <button type="button">GO</button>
         </form>
-    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button>
-</section>
-<div id="map" style="width: 100%; height: 400px;"></div>
+        <button onclick="onAddMarker()" class="btn-add-marker">
+          Add Marker Speific Location
+        </button>
+        <button onclick="onGetUserPos()" class="btn-user-pos">
+          My Location
+        </button>
+        <button onclick="onGetLocs()" class="btn-get-locs">
+          Get Locations
+        </button>
+        <button onclick="onPanTo()" class="btn-pan">Pan Map to Tokyo</button>
+      </section>
+      <div id="map" style="width: 100%; height: 400px"></div>
     </main>
-    
 
     <script type="module" src="js/app.controller.js"></script>
-</body>
+  </body>
 </html>

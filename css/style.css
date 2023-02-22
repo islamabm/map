@@ -9,9 +9,4 @@
 
 /* COMPONENTS */
 @import 'components/btns.css';
-/*@import 'components/section.css';
-@import 'components/gallery.css';
-@import 'components/header.css';
-@import 'components/screen.css';
-@import 'components/hamburger.css';
-@import 'components/filter-keys.css'; */
+@import 'components/place.css';
