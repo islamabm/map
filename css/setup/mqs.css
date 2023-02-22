@@ -1,0 +1,57 @@
+@media (max-width: 930px) {
+    .main-layout {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        text-align: center;
+    }
+
+    #map {
+        margin: 2em 0 2em;
+        width: 100vh;
+    }
+
+    h1 {
+        font-size: 5em;
+    }
+
+    button {
+        max-width: 50vh;
+        margin-left: 7vh;
+    }
+}
+
+
+@media (min-width: 950px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns: 10px 1fr 1fr 10px;
+        gap: 1.5em;
+    }
+
+    .main-content {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+   .locs-container{
+        grid-column: 2;
+        grid-row: 1;
+        margin-top: 5em;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+    .locs{
+        grid-column: 1;
+    }
+
+    h1{
+        position: absolute;
+        font-size: 2.5em;
+        grid-column: 2;
+        left: 1em;
+    }
+    
+
+}
