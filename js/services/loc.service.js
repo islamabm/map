@@ -36,6 +36,14 @@ function loadFromStorage(key) {
   return JSON.parse(val)
 }
 
-function saveToStorage(key, val) {
-  localStorage.setItem(key, JSON.stringify(val))
-}
+// function saveToStorage(key, val) {
+//   localStorage.setItem(key, JSON.stringify(val))
+// }
+
+// function save(loc) {
+//   if (loc.id) {
+//     return storageService.put('locDB', loc)
+//   } else {
+//     return storageService.post('locDB', loc)
+//   }
+// }

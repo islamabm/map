@@ -1,6 +1,8 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
+// let gMarkers = []
+
 window.onload = onInit
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
@@ -8,7 +10,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onDeleteLoc = onDeleteLoc
 window.onGoLoc = onGoLoc
-window.onSearchLoc = onSearchLoc
+// window.onSearchLoc = onSearchLoc
 
 function onInit() {
   renderPlaces()
@@ -40,7 +42,7 @@ function onDeleteLoc(locId) {
 }
 
 function onGoLoc(locLat, locLng) {
-  mapService.initMap(locLng,locLat)
+  mapService.initMap(locLng, locLat)
 }
 
 // add location to the list locs
@@ -51,11 +53,11 @@ function onGetLocs() {
   })
 }
 
-function onSearchLoc(ev) {
-  console.log('itay')
-  ev.preventDefault()
-  mapService.findAdress()
-}
+// function onSearchLoc(ev) {
+//   ev.preventDefault()
+//   let elUserInput = document.querySelector('input[name="place-name"]').value
+//   mapService.codeAddress(elUserInput)
+// }
 
 // on click this btn changed the element html
 
@@ -73,6 +75,7 @@ function onGetUserPos() {
       console.log('err!!!', err)
     })
 }
+
 // when user click go to this
 function onPanTo() {
   console.log('Panning the Map')
@@ -104,3 +107,23 @@ function loadFromStorage(key) {
   var val = localStorage.getItem(key)
   return JSON.parse(val)
 }
+
+// function renderMarkers() {
+//   const places = loadFromStorage('locDB')
+//   // remove previous markers
+//   gMarkers.forEach((marker) => marker.setMap(null))
+//   // create a marker for every place
+//   gMarkers = places.map(({ lat, lng, name }) => {
+//     const coord = { lat, lng }
+//     return new google.maps.Marker({
+//       position: coord,
+//       map: gMap,
+//       title: name,
+//     })
+//   })
+// }
+
+// function loadFromStorage(key) {
+//   var val = localStorage.getItem(key)
+//   return JSON.parse(val)
+// }
