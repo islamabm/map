@@ -1,4 +1,4 @@
-import { locService } from './services/loc.service.js'
+import { locService } from './loc.service.js'
 
 export const mapService = {
   initMap,
@@ -32,13 +32,12 @@ function handleMapClick(ev) {
   const updatedAt = createdAt
 
   const location = {
-    // createdAt,
-    // id,
+    createdAt,
+    id,
     locationName,
     latitude,
     langitude,
-    // updatedAt,
-    // weather,
+    updatedAt,
   }
   locService.addLoc(location)
 }
