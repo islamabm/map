@@ -2,12 +2,9 @@ export const locService = {
   getLocs,
   addLoc,
   deleteLoc,
+  save,
 }
-
-// const locs = [
-//   { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
-//   { name: 'Neveragain', lat: 32.047201, lng: 34.832581 },
-// ]
+import { storageService } from './async-storage.service.js'
 
 const locs = loadFromStorage('locDB') || []
 
@@ -36,14 +33,14 @@ function loadFromStorage(key) {
   return JSON.parse(val)
 }
 
-// function saveToStorage(key, val) {
-//   localStorage.setItem(key, JSON.stringify(val))
-// }
+function saveToStorage(key, val) {
+  localStorage.setItem(key, JSON.stringify(val))
+}
 
-// function save(loc) {
-//   if (loc.id) {
-//     return storageService.put('locDB', loc)
-//   } else {
-//     return storageService.post('locDB', loc)
-//   }
-// }
+function save(loc) {
+  if (loc.id) {
+    return storageService.put('locDB', loc)
+  } else {
+    return storageService.post('locDB', loc)
+  }
+}

@@ -1,7 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
-// let gMarkers = []
 
 window.onload = onInit
 window.onAddMarker = onAddMarker
@@ -10,7 +9,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onDeleteLoc = onDeleteLoc
 window.onGoLoc = onGoLoc
-// window.onSearchLoc = onSearchLoc
+window.onSearchLoc = onSearchLoc
 
 function onInit() {
   renderPlaces()
@@ -53,11 +52,12 @@ function onGetLocs() {
   })
 }
 
-// function onSearchLoc(ev) {
-//   ev.preventDefault()
-//   let elUserInput = document.querySelector('input[name="place-name"]').value
-//   mapService.codeAddress(elUserInput)
-// }
+function onSearchLoc(ev) {
+  ev.preventDefault()
+  let elUserInput = document.querySelector('input[name="place-name"]').value
+  mapService.codeAddress(elUserInput).then(locService.save)
+  // .then(renderPlaces)
+}
 
 // on click this btn changed the element html
 

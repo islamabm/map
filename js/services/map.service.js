@@ -5,7 +5,7 @@ export const mapService = {
   addMarker,
   panTo,
   getIcon,
-  // codeAddress,
+  codeAddress,
 }
 
 // Var that is used throughout this Module (not global)
@@ -22,22 +22,24 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     })
   })
 }
-// function codeAddress(address) {
-//   let address = 'israel'
-//   return new Promise((resolve, reject) => {
-//     const geocoder = new google.maps.Geocoder()
-//     geocoder.geocode({ address: address }, function (results, status) {
-//       if (status == 'OK') {
-//         const loc = JSON.parse(JSON.stringify(results[0].geometry.location))
-//         console.log(loc)
-//         panTo(loc.lat, loc.lng)
-//         resolve({ latLng: loc, name: address })
-//       } else {
-//         alert('Geocode was not successful for the following reason: ' + status)
-//       }
-//     })
-//   })
-// }
+
+function codeAddress(address) {
+
+  return new Promise((resolve, reject) => {
+    const geocoder = new google.maps.Geocoder()
+    geocoder.geocode({ address: address }, function (results, status) {
+      if (status == 'OK') {
+        const loc = JSON.parse(JSON.stringify(results[0].geometry.location))
+        console.log(loc)
+        panTo(loc.lat, loc.lng)
+        resolve({ latLng: loc, name: address })
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status)
+      }
+    })
+  })
+}
+
 function handleMapClick(ev) {
   const latitude = ev.lat
   const langitude = ev.lng
